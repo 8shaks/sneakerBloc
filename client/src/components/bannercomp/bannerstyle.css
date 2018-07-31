@@ -1,0 +1,10 @@
+.banner{
+    font-size:100px;
+       width:100%;
+    color:white;
+        text-align:left;
+        font-family:"Verdana";
+    font-weight:bold;
+    padding-top:70px;
+    background-image:url("https://static1.squarespace.com/static/572cff1f859fd009b42eb945/t/573135cf7c65e4d72b386a2c/1462842836988/Illest-Sneakers-Banner-Content.png?format=1500w");
+}

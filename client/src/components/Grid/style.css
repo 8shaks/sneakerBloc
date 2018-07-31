@@ -1,0 +1,40 @@
+
+
+
+
+.image{
+	display: block;
+  max-width: 100%;
+  height: auto;
+	transform: scale(0.75,0.75);
+}
+
+
+.gridtext{
+	text-align:center;
+	
+}
+.grid{
+	top:300px;
+	left:50px;
+	grid-gap: 20px;
+    height:700px;
+    width:1200px;
+    border:0px solid #4d4e4f;
+    position:relative;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 450px;
+	grid-auto-flow: row;
+	grid-auto-rows:450px;
+    align-content:center;
+	display:inline-grid;
+	
+}
+.box{
+ border:10px solid #4d4e4f;
+ background-color:white;
+	 border-radius:10px;
+}
+  
+    
