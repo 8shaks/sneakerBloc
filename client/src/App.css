@@ -1,4 +1,37 @@
+/** {
+  font-family: myFirstFont;
+}
 
-
+@font-face {
+  font-family: myFirstFont;
+  src: url(https://fonts.googleapis.com/css?family=Roboto:300, 400, 500);
+}
+*/
 /* override bootstrap navbar colors */
 
+.sidebar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: block;
+}
+
+.side {
+  position: absolute;
+  width: 200px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  background-color: #f2f2f2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

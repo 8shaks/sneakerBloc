@@ -1,10 +1,18 @@
-.banner{
-    font-size:100px;
-       width:100%;
-    color:white;
-        text-align:left;
-        font-family:"Verdana";
-    font-weight:bold;
-    padding-top:70px;
-    background-image:url("https://static1.squarespace.com/static/572cff1f859fd009b42eb945/t/573135cf7c65e4d72b386a2c/1462842836988/Illest-Sneakers-Banner-Content.png?format=1500w");
+.banner {
+  font-size: 100px;
+  width: 100%;
+  color: white;
+  text-align: left;
+  font-family: "Verdana";
+  font-weight: bold;
+  padding-top: 70px;
+  background-image: url("https://pixabay.com/get/eb37b00c2ef5083ed1584d05fb1d4f91e775e5d31dac104496f3c87ca6e9b6bc_1280.jpg");
+  background-size: cover;
+  background-position: 20% 60%;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 100%;
+  color: white;
 }
