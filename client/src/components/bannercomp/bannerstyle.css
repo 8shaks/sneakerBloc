@@ -6,7 +6,7 @@
   font-family: "Verdana";
   font-weight: bold;
   padding-top: 70px;
-  background-image: url("https://pixabay.com/get/eb37b00c2ef5083ed1584d05fb1d4f91e775e5d31dac104496f3c87ca6e9b6bc_1280.jpg");
+  background-image: url("./bannerImage.jpg");
   background-size: cover;
   background-position: 20% 60%;
 }
