@@ -20,10 +20,6 @@ const styles = theme => ({
 });
 
 class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { isAuthenticated } = this.props.auth;
     const { classes } = this.props;
@@ -40,26 +36,32 @@ class Sidebar extends Component {
     return (
       <div className={classes.root}>
         <List component="nav">
-          {isAuthenticated ? (
-            <div>
-              <Typography> {authLinks} </Typography>
-            </div>
-          ) : (
-            guestLinks
-          )}
+          {isAuthenticated ? <div>{authLinks} </div> : guestLinks}
 
-          <ListItem button>
-            <ListItemText style={{ paddingTop: 50 }} primary="Sell" />
-          </ListItem>
+          <Link to="/post-a-listing">
+            <ListItem button>
+              {" "}
+              <ListItemText
+                tag="div"
+                style={{ paddingTop: 50 }}
+                primary="Post a listing"
+              />{" "}
+            </ListItem>
+          </Link>
           <ListItem button>
             <ListItemText
+              tag="div"
               style={{ paddingTop: 50 }}
               primary="Become a verifier"
             />
           </ListItem>
           <Link to="/contactus">
             <ListItem button>
-              <ListItemText style={{ paddingTop: 50 }} primary="Contact Us" />
+              <ListItemText
+                tag="div"
+                style={{ paddingTop: 50 }}
+                primary="Contact Us"
+              />
             </ListItem>
           </Link>
         </List>

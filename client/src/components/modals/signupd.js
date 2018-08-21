@@ -149,7 +149,7 @@ class SignUpD extends Component {
   }
 }
 
-SignUpD.PropTypes = {
+SignUpD.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired

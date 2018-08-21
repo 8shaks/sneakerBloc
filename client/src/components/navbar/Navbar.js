@@ -75,7 +75,7 @@ class Navbar extends Component {
               <Sidebar />
             </div>
             <IconButton
-              onClick={this.toggle}
+              onClick={this.toggle.bind(this)}
               className={classes.menuButton}
               color="inherit"
               aria-label="Menu"
@@ -99,19 +99,9 @@ class Navbar extends Component {
             <Typography className={classes.flex} variant="headline">
               Welcome{" "}
             </Typography>
-            {isAuthenticated ? (
-              <div>
-                <Typography> {authLinks} </Typography>
-              </div>
-            ) : (
-              GuestLinks
-            )}
+            {isAuthenticated ? <div>{authLinks}</div> : GuestLinks}
 
-            <div>
-              <Typography>
-                {user.username ? <div> {user.username} </div> : null}
-              </Typography>
-            </div>
+            <div>{user.username ? <div> {user.username} </div> : null}</div>
           </Toolbar>
         </AppBar>
       </div>

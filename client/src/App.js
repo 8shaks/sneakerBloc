@@ -1,20 +1,30 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
+import store from "./store";
+
 import "./App.css";
+import "typeface-roboto";
+
 import NavBar from "./components/navbar/Navbar";
 import Banner from "./components/bannercomp/banner";
 import Footer from "./components/footer/footer";
-import { Provider } from "react-redux";
-import store from "./store";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Grid from "./components/body/grid";
+import GridListings from "./components/posts/grid";
 import AfterSignup from "./components/body/aftersignup";
-import jwt_decode from "jwt-decode";
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser } from "./actions/authActions";
-import { logoutUser } from "./actions/authActions";
 import LoginD from "./components/modals/logind";
+import notAuthenticated from "./components/common/notauthenticated";
+import ListingsForm from "./components/posts/listingsform";
+
 import contact from "./components/Contact info/contact";
 import SignUpD from "./components/modals/signupd";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./components/common/Privateroute";
+
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+
+import { setCurrentUser } from "./actions/authActions";
+import { logoutUser } from "./actions/authActions";
 
 //check for token
 
@@ -46,9 +56,23 @@ class App extends Component {
             <Banner />
             <Route exact path="/signup" component={SignUpD} />
             <Route exact path="/login" component={LoginD} />
-            <Route exact path="/" component={Grid} />
+            <Route exact path="/" component={GridListings} />
             <Route exact path="/contactus" component={contact} />
-            <Route exact path="/signup/done" component={AfterSignup} />
+            <Switch>
+              <PrivateRoute exact path="/signup/done" component={AfterSignup} />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/post-a-listing"
+                component={ListingsForm}
+              />
+            </Switch>{" "}
+            <Route
+              exact
+              path="/authentication-error"
+              component={notAuthenticated}
+            />
             <Footer />
           </div>
         </Router>
