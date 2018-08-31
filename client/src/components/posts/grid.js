@@ -3,40 +3,33 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/postActions";
-import { tileData } from "../../pictures/images";
-import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { Paper, Typography } from "@material-ui/core";
 import PostFeed from "./postfeed";
 
 const styles = theme => ({
-  subtitle: {
-    height: "auto"
-  },
   root: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
-    margin: 0
+    margin: 0,
+    [theme.breakpoints.down("sm")]: {}
   },
-  image: {
-    maxWidth: "100%",
-    maxHeight: "100%"
-  },
-  icon: {
-    color: "rgba(255, 255, 255, 0.54)"
-  },
-  grid: {
-    margin: "auto",
-    width: "80%"
-  },
+
   paper: {
-    margin: "1%",
+    margin: "auto",
+    justifyContent: "space-between",
     padding: "1%",
-    width: "80%"
+    width: "80%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
   },
-  gridtile: {}
+  progress: {
+    margin: theme.spacing.unit * 2
+  }
 });
 
 class GridListings extends Component {
@@ -50,7 +43,13 @@ class GridListings extends Component {
     let postContent;
 
     if (posts === null || loading) {
-      postContent = <div> loading</div>;
+      postContent = (
+        <div style={{ margin: "auto" }}>
+          <span>
+            <CircularProgress className={classes.progress} />{" "}
+          </span>
+        </div>
+      );
     } else {
       postContent = <PostFeed posts={posts} />;
     }
@@ -58,12 +57,34 @@ class GridListings extends Component {
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
-          <Typography align="center" variant="display2">
+          <Typography
+            align="center"
+            variant="display3"
+            style={{ marginBottom: "1%" }}
+            color="inherit"
+          >
             Sneaker Listings
           </Typography>
-          <Grid container className={classes.grid} spacing={16}>
-            {postContent}
-          </Grid>
+
+          <div
+            className="row"
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto"
+            }}
+          >
+            {posts[0] || posts === null ? (
+              postContent
+            ) : (
+              <Typography
+                variant="display2"
+                align="center"
+                style={{ margin: "auto", padding: "3%", width: "50%" }}
+              >
+                No posts yet
+              </Typography>
+            )}
+          </div>
         </Paper>
       </div>
     );

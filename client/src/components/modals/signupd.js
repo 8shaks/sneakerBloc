@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import { openDialog, closeDialog } from "../../actions/dialogActions";
 
 class SignUpD extends Component {
   constructor() {
@@ -34,17 +35,20 @@ class SignUpD extends Component {
       this.props.history.push("/");
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    } else {
     }
   }
+
   handleClickOpen = () => {
-    this.setState({ open: true });
+    this.props.openDialog();
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.props.closeDialog();
   };
 
   onChange(e) {
@@ -53,7 +57,7 @@ class SignUpD extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-
+    this.setState({ errors: {}, password: "", passowrd2: "" });
     const newUser = {
       username: this.state.username,
       email: this.state.email,
@@ -66,6 +70,7 @@ class SignUpD extends Component {
 
   render() {
     const { errors } = this.state;
+    const { open } = this.props.dialog;
 
     return (
       <div>
@@ -78,7 +83,7 @@ class SignUpD extends Component {
         </ListItem>
         <Dialog
           fullWidth
-          open={this.state.open}
+          open={open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
           style={{ width: "100" }}
@@ -152,14 +157,18 @@ class SignUpD extends Component {
 SignUpD.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  dialog: PropTypes.object.isRequired,
+  closeDialog: PropTypes.func.isRequired,
+  openDialog: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
+  dialog: state.dialog
 });
 
 export default connect(
   mapStateToProps,
-  { registerUser }
+  { registerUser, openDialog, closeDialog }
 )(withRouter(SignUpD));

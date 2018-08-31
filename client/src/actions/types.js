@@ -5,4 +5,6 @@ export const GET_POSTS = "GET_POSTS";
 export const GET_POST = "GET_POST";
 export const ADD_POST = "ADD_POST";
 export const DELETE_POST = "DELETE_POST";
+export const OPEN_DIALOG = "OPEN_DIALOG";
+export const CLOSE_DIALOG = "CLOSE_DIALOG";
 // export const GET_POST_IMAGE = "GET_POST_IMAGE";

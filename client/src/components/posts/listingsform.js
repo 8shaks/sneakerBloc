@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
 import { TextField, Button } from "@material-ui/core";
+import { withRouter } from "react-router-dom";
 
 class ListingsForm extends Component {
   constructor(props) {
@@ -34,12 +35,7 @@ class ListingsForm extends Component {
       size: this.state.size,
       shoename: this.state.shoename
     };
-    this.props.addPost(newPost);
-    this.setState({
-      price: "",
-      shoename: "",
-      size: ""
-    });
+    this.props.addPost(newPost, this.props.history);
   }
 
   onChange(e) {

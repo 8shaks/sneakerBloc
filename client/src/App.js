@@ -13,7 +13,8 @@ import AfterSignup from "./components/body/aftersignup";
 import LoginD from "./components/modals/logind";
 import notAuthenticated from "./components/common/notauthenticated";
 import ListingsForm from "./components/posts/listingsform";
-
+import Post from "./components/posts/Post";
+import AfterPost from "./components/posts/afterpost";
 import contact from "./components/Contact info/contact";
 import SignUpD from "./components/modals/signupd";
 
@@ -58,9 +59,9 @@ class App extends Component {
             <Route exact path="/login" component={LoginD} />
             <Route exact path="/" component={GridListings} />
             <Route exact path="/contactus" component={contact} />
-            <Switch>
-              <PrivateRoute exact path="/signup/done" component={AfterSignup} />
-            </Switch>
+            <Route exact path="/post/:id" component={Post} />
+            <Route exact path="/signup/done" component={AfterSignup} />
+            <Route exact path="/created-post" component={AfterPost} />
             <Switch>
               <PrivateRoute
                 exact

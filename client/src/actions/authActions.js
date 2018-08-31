@@ -1,13 +1,19 @@
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, CLOSE_DIALOG } from "./types";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { closeDialog } from "./dialogActions";
 //Register user
 
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
-    .then(res => history.push("/signup/done"))
+    .then(res => {
+      history.push("/signup/done");
+      dispatch({
+        type: CLOSE_DIALOG
+      });
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

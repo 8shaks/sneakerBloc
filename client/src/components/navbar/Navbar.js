@@ -9,6 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Sidebar from "./Sidebar";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { Link } from "react-router-dom";
 
 //make Username show beside logout button
 
@@ -17,7 +18,9 @@ const styles = {
     flexGrow: 1
   },
   flex: {
-    flexGrow: 1
+    flexGrow: 1,
+    width: "90%",
+    margin: "auto"
   },
   menuButton: {
     marginLeft: -12,
@@ -53,9 +56,9 @@ class Navbar extends Component {
     const authLinks = (
       <div>
         <Typography variant="headline">
-          <a href="/" onClick={this.onLogoutClick.bind(this)}>
+          <Link to="/post-a-listing" onClick={this.onLogoutClick.bind(this)}>
             Logout
-          </a>
+          </Link>
         </Typography>
       </div>
     );
@@ -97,11 +100,10 @@ class Navbar extends Component {
               Palace du Kicks
             </Typography>
             <Typography className={classes.flex} variant="headline">
-              Welcome{" "}
+              Welcome &nbsp;
+              {user.name}
             </Typography>
             {isAuthenticated ? <div>{authLinks}</div> : GuestLinks}
-
-            <div>{user.username ? <div> {user.username} </div> : null}</div>
           </Toolbar>
         </AppBar>
       </div>

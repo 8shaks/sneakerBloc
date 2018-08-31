@@ -2,7 +2,9 @@ import {
   ADD_POST,
   GET_POSTS,
   POST_LOADING,
-  GET_POST_IMAGE
+  GET_POST_IMAGE,
+  GET_POST,
+  DELETE_POST
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +30,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: [action.payload, ...state.posts]
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: action.payload,
+        loading: false
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id !== action.payload)
       };
     // case GET_POST_IMAGE:
     //   return {
