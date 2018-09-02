@@ -5,7 +5,7 @@ const passport = require("passport");
 const Listing = require("../../models/Listing");
 const validateListingInput = require("../../validation/listing");
 const validateCommentInput = require("../../validation/comments");
-const User = require("../../models/User");
+const User = require("../../models/user");
 
 const multer = require("multer");
 const storage = multer.diskStorage({

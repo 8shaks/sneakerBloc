@@ -8,7 +8,6 @@ import Divider from "@material-ui/core/Divider";
 import LoginD from "../modals/logind";
 import SignUpD from "../modals/signupd";
 import { connect } from "react-redux";
-import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
 const styles = theme => ({
@@ -62,6 +61,8 @@ class Sidebar extends Component {
                 style={{ paddingTop: 50 }}
                 primary="Contact Us"
               />
+            
+            
             </ListItem>
           </Link>
         </List>

@@ -15,7 +15,8 @@ import { Link } from "react-router-dom";
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+   
   },
   flex: {
     flexGrow: 1,
@@ -40,8 +41,7 @@ class Navbar extends Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-    console.log("its working");
-    console.log(this.state.isOpen);
+  
   };
 
   onLogoutClick(e) {
@@ -72,7 +72,8 @@ class Navbar extends Component {
             <div
               className="side"
               style={{
-                display: this.state.isOpen ? "block" : "none"
+                display: this.state.isOpen ? "block" : "none",
+                
               }}
             >
               <Sidebar />
@@ -83,12 +84,13 @@ class Navbar extends Component {
               color="inherit"
               aria-label="Menu"
               style={{
-                zIndex: 4
+                zIndex: 4,
               }}
             >
               <MenuIcon
                 style={{
-                  zIndex: 5
+                  zIndex: 5,
+                  position: this.state.isOpen ? 'fixed': 'static'
                 }}
               />
             </IconButton>

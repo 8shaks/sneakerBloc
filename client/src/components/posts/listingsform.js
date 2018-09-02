@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
 import { TextField, Button } from "@material-ui/core";
-import { withRouter } from "react-router-dom";
+
 
 class ListingsForm extends Component {
   constructor(props) {

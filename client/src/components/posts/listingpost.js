@@ -6,7 +6,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Grid, Typography, Button, Paper, ButtonBase } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { deletePost } from "../../actions/postActions";
-// import { getPostImage } from "@material-ui/core";
+import withWidth from '@material-ui/core/withWidth';
+
+
 
 const styles = theme => ({
   root: {
@@ -26,7 +28,12 @@ const styles = theme => ({
     display: "block",
     maxWidth: "100%",
     maxHeight: "100%"
+  },
+  gridItem:{
+    [theme.breakpoints.down("xs")]: {
+    },
   }
+  
 });
 
 class ListingPost extends Component {
@@ -36,18 +43,28 @@ class ListingPost extends Component {
 
   render() {
     const { post, auth, classes } = this.props;
+    const { width} = this.props
+
+    let name;
+
+    if(width === 'xs' && post.shoename.length>7){
+      name=post.shoename.substring(0,7) + '...';
+    }else {
+      name=post.shoename
+    }
+
 
     return (
-      <Grid container xs={12} md={4}>
+      <Grid item xs={6} md={4}>
         <Paper className={classes.root} style={{ marginBottom: "5%" }}>
           <Grid
             container
             spacing={24}
             direction="row"
             justify="flex-start"
-            xs={12}
+         
           >
-            <Grid item xs={12}>
+            <Grid item xs={12} >
               <ButtonBase className={classes.image}>
                 <Link to={`/post/${post._id}`}>
                   <img
@@ -64,9 +81,9 @@ class ListingPost extends Component {
             </Grid>
             <Grid item xs={12} sm container direction="row">
               <Grid item xs container spacing={16}>
-                <Grid item xs>
+                <Grid item xs  className={classes.gridItem}>
                   <Typography gutterBottom variant="subheading">
-                    {post.shoename}
+                    {name}
                   </Typography>
                   <Typography gutterBottom>
                     Size:
@@ -110,7 +127,8 @@ ListingPost.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  deletePost: PropTypes.func.isRequired
+  deletePost: PropTypes.func.isRequired,
+  withWidth:PropTypes.string
 };
 
 const mapStateToProps = state => ({
@@ -120,4 +138,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { deletePost }
-)(withStyles(styles)(ListingPost));
+)(withWidth()(withStyles(styles)(ListingPost)));

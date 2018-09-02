@@ -1,26 +1,12 @@
-/** {
-  font-family: myFirstFont;
-}
-
-@font-face {
-  font-family: myFirstFont;
-  src: url(https://fonts.googleapis.com/css?family=Roboto:300, 400, 500);
-}
-*/
-/* override bootstrap navbar colors */
-
-.sidebar {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: block;
+html{
+  height:100%
 }
 
 .side {
-  position: absolute;
+  position: fixed;
   width: 200px;
-  height: 100vh;
+  min-height: 100vh;
+  
   top: 0;
   left: 0;
   z-index: 2;
@@ -35,3 +21,4 @@ body {
   margin: 0;
   padding: 0;
 }
+

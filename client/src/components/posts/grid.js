@@ -15,7 +15,6 @@ const styles = theme => ({
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
     margin: 0,
-    [theme.breakpoints.down("sm")]: {}
   },
 
   paper: {

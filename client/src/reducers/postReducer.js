@@ -2,7 +2,6 @@ import {
   ADD_POST,
   GET_POSTS,
   POST_LOADING,
-  GET_POST_IMAGE,
   GET_POST,
   DELETE_POST
 } from "../actions/types";
